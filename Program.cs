@@ -51,6 +51,8 @@ class Program
 
         //Initialize array
         string[,] array2D = new string[nRows, nCols];
+        //Initialize Random
+        Random rng = new Random();
 
         //Rondom symbols
         List<string> symbols = new List<string>() { "?", "&", "%", "$", "*" };
@@ -62,7 +64,6 @@ class Program
         {
             for (int col = 0; col < nCols; col++)
             {
-                Random rng = new Random();
                 int indexRandomSymbol = rng.Next(0, symbols.Count);
                 array2D[row, col] = symbols[indexRandomSymbol];
             }
@@ -76,12 +77,9 @@ class Program
         {
             for (int col = 0; col < nCols; col++)
             {
-                Random rngR = new Random();
-                int r = rngR.Next(0, 256);
-                Random rngG = new Random();
-                int g = rngG.Next(0, 256);
-                Random rngB = new Random();
-                int b = rngB.Next(0, 256);
+                int r = rng.Next(0, 256);
+                int g = rng.Next(0, 256);
+                int b = rng.Next(0, 256);
 
                 Console.Write("| ");
                 Console.Write(array2D[row, col] + " ", Color.FromArgb(r, g, b));
