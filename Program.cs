@@ -130,37 +130,22 @@ class Program
 
         if (mode == ALTERNATING_SYMBOLS_MODE)
         {
-            //first element
-            array2D[0, 0] = "X";
-
-            //first column
-            for (int row = 1; row < nRows; row++)
-            {
-                if (array2D[row - 1, 0] == "X")
-                {
-                    array2D[row, 0] = "O";
-                }
-                else
-                {
-                    array2D[row, 0] = "X";
-                }
-            }
-
-            //populate rest of array
             for (int row = 0; row < nRows; row++)
             {
-                for (int col = 1; col < nCols; col++)
+                for (int col = 0; col < nCols; col++)
                 {
-                    if (array2D[row, col - 1] == "X")
-                    {
-                        array2D[row, col] = "O";
-                    }
-                    else
+                    if (row % 2 == 0 && col % 2 == 0 || row % 2 != 0 && col % 2 != 0)
                     {
                         array2D[row, col] = "X";
                     }
+                    if (row % 2 != 0 && col % 2 == 0 || row % 2 == 0 && col % 2 != 0)
+                    {
+                        array2D[row, col] = "0";
+                    }
+                    
                 }
             }
+
 
             //print array
             for (int row = 0; row < nRows; row++)
