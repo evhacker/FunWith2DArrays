@@ -10,8 +10,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int MAXROWS = 15;
-        const int MAXCOLS = 15;
+        const int MAX_ROWS = 15;
+        const int MAX_COLS = 15;
+
+        const int RANDOM_SYMBOLS_MODE = 1;
+        const int SHOW_INDICES_MODE = 2;
+        const int ALTERNATING_SYMBOLS_MODE = 3;
 
         int nRows = 0;
         int nCols = 0;
@@ -21,11 +25,10 @@ class Program
         {
             Console.WriteLine("Please enter the number of rows and press enter:");
             nRows = Convert.ToInt32(Console.ReadLine());
-            if (nRows > MAXROWS)
+            if (nRows > MAX_ROWS)
             {
-                Console.WriteLine($"Number of rows too high - max is {MAXROWS}");
+                Console.WriteLine($"Number of rows too high - max is {MAX_ROWS}");
                 inputRowCorrect = false;
-                continue;
             }
             else
             {
@@ -38,9 +41,9 @@ class Program
         {
             Console.WriteLine("Please enter the number of columns and press enter:");
             nCols = Convert.ToInt32(Console.ReadLine());
-            if (nCols > MAXCOLS)
+            if (nCols > MAX_COLS)
             {
-                Console.WriteLine($"Number of columns too high - max is {MAXCOLS}");
+                Console.WriteLine($"Number of columns too high - max is {MAX_COLS}");
                 inputColCorrect = false;
             }
             else
@@ -56,12 +59,12 @@ class Program
 
         //Let user choose mode
         Console.WriteLine(
-            "Please choose a mode (enter number of the mode and press enter):\n1 random symbols\n2 show indices\n3 alternating symbols");
+            "Please choose an array mode (enter number of the mode and press enter):\n1 random symbols\n2 show indices\n3 alternating symbols");
         int mode = Convert.ToInt32(Console.ReadLine());
 
-        if (mode == 1)
+        if (mode == RANDOM_SYMBOLS_MODE)
         {
-            //Rondom symbols
+            //Random symbols
             List<string> symbols = new List<string>() { "?", "&", "%", "$", "*" };
 
             //Populate array
@@ -96,7 +99,7 @@ class Program
             }
         }
 
-        if (mode == 2)
+        if (mode == SHOW_INDICES_MODE)
         {
             //Populate Array
             for (int row = 0; row < nRows; row++)
@@ -125,7 +128,7 @@ class Program
             }
         }
 
-        if (mode == 3)
+        if (mode == ALTERNATING_SYMBOLS_MODE)
         {
             //first element
             array2D[0, 0] = "X";
